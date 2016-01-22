@@ -1,24 +1,29 @@
-@BEFORE = $('audio#before')[0]
-
-@BEFORE.addEventListener 'timeupdate', ->
-  now = Math.floor(@currentTime)
-  if @duration - now < 2
-    $('button#win').prop('disabled', false)
-    $('button#lose').prop('disabled', false)
 
 setTimeout ->
+  BEFORE = $('audio#before')[0]
+  BEFORE.addEventListener 'timeupdate', ->
+    now = Math.floor(@currentTime)
+    if @duration - now < 2
+      $('button#win').prop('disabled', false)
+      $('button#lose').prop('disabled', false)
+
+  WIN = $('audio#win')[0]
+
   $('button#start').click ->
-    @BEFORE.play()
-, 1000
+    BEFORE.play()
 
-$('#myModal').on 'hidden.bs.modal', ->
-  reset()
+  $('button#win').click ->
+    WIN.play()
 
-setTimeout ->
   reset = ->
-    @BEFORE.pause()
-    @BEFORE.currentTime = 0
+    BEFORE.pause()
+    BEFORE.currentTime = 0
+    WIN.pause()
+    WIN.currentTime = 0
     $('button#win').prop('disabled', true)
     $('button#lose').prop('disabled', true)
-, 1000
+
+  $('#myModal').on 'hidden.bs.modal', ->
+    reset()
+, 100
 
