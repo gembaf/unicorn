@@ -1,3 +1,14 @@
+
 .index
-  button.btn.btn-success#start 俺は…、行くよ。
+  button.btn.btn-success#start data-toggle="modal" data-target="#myModal"
+    | 俺は…、行くよ。
+
+.modal.fade#myModal tabindex="-1" role="dialog"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close type="button" data-dismiss="modal" aria-label="Close"
+          span aria-hidden="true" &times;
+      .modal-body
+        p hoge
 
