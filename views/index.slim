@@ -10,6 +10,12 @@
         button.close type="button" data-dismiss="modal" aria-label="Close"
           span aria-hidden="true" &times;
       .modal-body.center
+        .row
+          .col-xs-offset-2.col-xs-4
+            button.select-btn.btn-primary#win disabled="disabled" 完全勝利
+          .col-xs-4
+            button.select-btn.btn-info#lose disabled="disabled" 完全敗北
+
         audio#before src="/assets/audios/before.mp3"
         audio preload="metadata"
           source src="/assets/audios/before.mp3" type="audio/mp3"
