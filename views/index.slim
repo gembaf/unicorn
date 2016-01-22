@@ -1,5 +1,5 @@
 
-.index
+.center
   button.btn.btn-success#start data-toggle="modal" data-target="#myModal"
     | 俺は…、行くよ。
 
@@ -9,6 +9,10 @@
       .modal-header
         button.close type="button" data-dismiss="modal" aria-label="Close"
           span aria-hidden="true" &times;
-      .modal-body
-        p hoge
+      .modal-body.center
+        audio#before src="/assets/audios/before.mp3"
+        audio preload="metadata"
+          source src="/assets/audios/before.mp3" type="audio/mp3"
+          source src="/assets/audios/win.mp3" type="audio/mp3"
+          source src="/assets/audios/lose.mp3" type="audio/mp3"
 
