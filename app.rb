@@ -3,6 +3,8 @@ require 'sinatra/asset_pipeline'
 require 'sinatra/reloader' if development?
 
 require 'slim'
+require 'sass'
+require 'coffee-script'
 
 set :root, File.dirname(__FILE__)
 set :assets_precompile, %w(application.js application.css
