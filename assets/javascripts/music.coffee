@@ -1,35 +1,44 @@
+before = $('audio#before')[0]
+win = $('audio#win')[0]
+lose = $('audio#lose')[0]
 
+before.src = "/audios/before.mp3"
+before.addEventListener 'timeupdate', ->
+  now = Math.floor(@currentTime)
+  if @duration - now < 2
+    $('button#win').prop('disabled', false)
+    $('button#lose').prop('disabled', false)
+
+# モーダルを閉じた時に全てリセットさせる
+$('#myModal').on 'hidden.bs.modal', ->
+  reset()
+
+reset = ->
+  stop before
+  stop win
+  stop lose
+  $('button#win').prop('disabled', true)
+  $('button#lose').prop('disabled', true)
+
+stop = (audio) ->
+  audio.pause()
+  audio.currentTime = 0
+
+# なぜかbeforeらがundefinedになるので遅延させる
 setTimeout ->
-  BEFORE = $('audio#before')[0]
-  BEFORE.addEventListener 'timeupdate', ->
-    now = Math.floor(@currentTime)
-    if @duration - now < 2
-      $('button#win').prop('disabled', false)
-      $('button#lose').prop('disabled', false)
-
-  WIN = $('audio#win')[0]
-  LOSE = $('audio#lose')[0]
-
   $('button#start').click ->
-    BEFORE.play()
+    before.play()
 
   $('button#win').click ->
-    WIN.play()
+    win.play()
 
   $('button#lose').click ->
-    LOSE.play()
+    lose.play()
+, 500
 
-  reset = ->
-    BEFORE.pause()
-    BEFORE.currentTime = 0
-    WIN.pause()
-    WIN.currentTime = 0
-    LOSE.pause()
-    LOSE.currentTime = 0
-    $('button#win').prop('disabled', true)
-    $('button#lose').prop('disabled', true)
-
-  $('#myModal').on 'hidden.bs.modal', ->
-    reset()
-, 100
+# beforeが終わるまでは流ないので後からロード
+setTimeout ->
+  win.src = "/audios/win.mp3"
+  lose.src = "/audios/lose.mp3"
+, 5000
 
