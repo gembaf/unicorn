@@ -1,3 +1,9 @@
+audio#before preload="auto"
+  source src="/assets/audios/before.mp3" type="audio/mp3"
+audio#win preload="auto"
+  source src="/assets/audios/win.mp3" type="audio/mp3"
+audio#lose preload="auto"
+  source src="/assets/audios/lose.mp3" type="audio/mp3"
 
 .center
   button.btn.btn-success#start data-toggle="modal" data-target="#myModal"
@@ -15,12 +21,4 @@
             button.select-btn.btn-primary#win disabled="disabled" 完全勝利
           .col-xs-4
             button.select-btn.btn-info#lose disabled="disabled" 完全敗北
-
-        audio#before src="/assets/audios/before.mp3"
-        audio#win src="/assets/audios/win.mp3"
-        audio#lose src="/assets/audios/lose.mp3"
-        audio preload="metadata"
-          source src="/assets/audios/before.mp3" type="audio/mp3"
-          source src="/assets/audios/win.mp3" type="audio/mp3"
-          source src="/assets/audios/lose.mp3" type="audio/mp3"
 
