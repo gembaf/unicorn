@@ -19,6 +19,8 @@ reset = ->
   stop lose
   $('button#win').prop('disabled', true)
   $('button#lose').prop('disabled', true)
+  $('img#img_win1').hide()
+  $('img#img_lose1').hide()
   $('div.buttons').show()
 
 stop = (audio) ->
@@ -37,6 +39,8 @@ setTimeout ->
 
   $('button#lose').click ->
     lose.play()
+    $('img#img_lose1').fadeIn(3000)
+    $('div.buttons').hide()
 , 500
 
 # beforeが終わるまでは流ないので後からロード

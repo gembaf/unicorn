@@ -41,6 +41,30 @@ feature 'get /' do
           expect(page).to have_selector 'img#img_win1', visible: true
         end
 
+        scenario '完全敗北の画像は表示されない', js: true do
+          expect(page).to have_selector 'img#img_lose1', visible: false
+        end
+
+        scenario 'ボタンが消える', js: true do
+          expect(page).to have_selector 'div.buttons', visible: false
+        end
+      end
+
+      context '完全敗北ボタンを押す' do
+        background do
+          click_button '完全敗北'
+          wait_for_ajax
+        end
+
+        scenario '完全敗北の画像が表示される', js: true do
+          page.execute_script("$('img#img_lose1').show()")
+          expect(page).to have_selector 'img#img_lose1', visible: true
+        end
+
+        scenario '完全勝利の画像は表示されない', js: true do
+          expect(page).to have_selector 'img#img_win1', visible: false
+        end
+
         scenario 'ボタンが消える', js: true do
           expect(page).to have_selector 'div.buttons', visible: false
         end
