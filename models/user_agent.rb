@@ -1,6 +1,6 @@
 class UserAgent
-  ANDROID = %w(Android)
-  IOS = %w(iPhone iPad iPod)
+  ANDROID = %w(Android).freeze
+  IOS = %w(iPhone iPad iPod).freeze
 
   def initialize(user_agent)
     @ua = user_agent

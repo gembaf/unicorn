@@ -1,8 +1,8 @@
 describe UserAgent do
   let(:user_agent) { UserAgent.new(request) }
-  let(:request_from_android) { "Android" }
-  let(:request_from_ios) { "iPhone" }
-  let(:request_from_pc) { "Chrome" }
+  let(:request_from_android) { 'Android' }
+  let(:request_from_ios) { 'iPhone' }
+  let(:request_from_pc) { 'Chrome' }
 
   context '#android?' do
     context 'Androidからのrequestだった場合' do
