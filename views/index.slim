@@ -7,7 +7,12 @@ audio#lose
     | 俺は…、行くよ。
 
 .modal.fade#myModal tabindex="-1" role="dialog"
-  .modal-dialog
+  - modal_dialog_class = "modal-dialog"
+  - if @ua.mobile?
+    - modal_dialog_class += " modal-vertical-middle-mobile"
+  - else
+    - modal_dialog_class += " modal-vertical-middle-pc"
+  div class="#{modal_dialog_class}"
     .modal-content
       .modal-header
         button.close type="button" data-dismiss="modal" aria-label="Close"
@@ -15,8 +20,8 @@ audio#lose
       .modal-body.center
         .row
           .col-xs-12
-            img.exhide#img_win1 width="360" height="270" src="#{image_path 'win1.jpg'}"
-            img.exhide#img_lose1 width="360" height="270" src="#{image_path 'lose1.jpg'}"
+            .image.img_win1.exhide
+            .image.img_lose1.exhide
         .row.buttons
           .col-xs-offset-2.col-xs-4
             button.select-btn.btn-primary#win disabled="disabled" 完全勝利

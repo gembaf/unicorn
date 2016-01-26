@@ -6,6 +6,8 @@ require 'slim'
 require 'sass'
 require 'coffee-script'
 
+Dir[File.dirname(__FILE__) + '/models/**/*.rb'].each { |f| require f }
+
 set :root, File.dirname(__FILE__)
 set :assets_precompile, %w(application.js application.css
                            *.png *.jpg *.svg
@@ -15,6 +17,7 @@ set :assets_js_compressor, :uglifier
 register Sinatra::AssetPipeline
 
 get '/' do
+  @ua = UserAgent.new(request.user_agent)
   slim :index
 end
 

@@ -21,7 +21,7 @@ feature 'get /' do
     end
 
     scenario '画像は隠れている', js: true do
-      expect(page).to have_selector 'img#img_win1', visible: false
+      expect(page).to have_selector '.image.img_win1', visible: false
     end
 
     context '完全勝利&完全敗北ボタンが押せるようになる' do
@@ -37,12 +37,12 @@ feature 'get /' do
         end
 
         scenario '完全勝利の画像が表示される', js: true do
-          page.execute_script("$('img#img_win1').show()")
-          expect(page).to have_selector 'img#img_win1', visible: true
+          page.execute_script("$('.image.img_win1').show()")
+          expect(page).to have_selector '.image.img_win1', visible: true
         end
 
         scenario '完全敗北の画像は表示されない', js: true do
-          expect(page).to have_selector 'img#img_lose1', visible: false
+          expect(page).to have_selector '.image.img_lose1', visible: false
         end
 
         scenario 'ボタンが消える', js: true do
@@ -57,12 +57,12 @@ feature 'get /' do
         end
 
         scenario '完全敗北の画像が表示される', js: true do
-          page.execute_script("$('img#img_lose1').show()")
-          expect(page).to have_selector 'img#img_lose1', visible: true
+          page.execute_script("$('.image.img_lose1').show()")
+          expect(page).to have_selector '.image.img_lose1', visible: true
         end
 
         scenario '完全勝利の画像は表示されない', js: true do
-          expect(page).to have_selector 'img#img_win1', visible: false
+          expect(page).to have_selector '.image.img_win1', visible: false
         end
 
         scenario 'ボタンが消える', js: true do
