@@ -19,6 +19,7 @@ reset = ->
   stop lose
   $('button#win').prop('disabled', true)
   $('button#lose').prop('disabled', true)
+  $('div.buttons').show()
 
 stop = (audio) ->
   audio.pause()
@@ -31,6 +32,8 @@ setTimeout ->
 
   $('button#win').click ->
     win.play()
+    $('img#img_win1').fadeIn(3000)
+    $('div.buttons').hide()
 
   $('button#lose').click ->
     lose.play()
