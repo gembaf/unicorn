@@ -2,9 +2,13 @@ audio#before
 audio#win
 audio#lose
 
-.center
-  button.btn.btn-success#start data-toggle="modal" data-target="#myModal"
-    | 俺は…、行くよ。
+.row.center
+  .col-xs-6
+    button.btn.btn-success#start data-toggle="modal" data-target="#myModal"
+      | フルバージョン
+  .col-xs-6
+    button.btn.btn-success#skip data-toggle="modal" data-target="#myModal"
+      | 短縮バージョン
 
 .modal.fade#myModal tabindex="-1" role="dialog"
   - modal_dialog_class = "modal-dialog"
