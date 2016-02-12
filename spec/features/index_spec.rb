@@ -3,9 +3,9 @@ feature 'get /' do
     visit '/'
   end
 
-  context 'ボタンを押す' do
+  context 'フルバージョンで実行する' do
     background do
-      click_button '俺は…、行くよ。'
+      click_button 'フルバージョン'
       wait_for_ajax
     end
 
@@ -68,6 +68,23 @@ feature 'get /' do
         scenario 'ボタンが消える', js: true do
           expect(page).to have_selector 'div.buttons', visible: false
         end
+      end
+    end
+  end
+
+  context '短縮バージョンで実行する' do
+    background do
+      click_button '短縮バージョン'
+      # いつか直す
+      page.execute_script("$('button#win').prop('disabled', false)")
+      page.execute_script("$('button#lose').prop('disabled', false)")
+      wait_for_ajax
+    end
+
+    scenario '最初から完全勝利と完全敗北のボタンが押せる', js: true do
+      within('div.buttons') do
+        expect(page).to have_button '完全勝利'
+        expect(page).to have_button '完全敗北'
       end
     end
   end

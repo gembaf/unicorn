@@ -38,6 +38,10 @@ setTimeout ->
   $('button#start').click ->
     before.play()
 
+  $('button#skip').click ->
+    btn_win.prop('disabled', false)
+    btn_lose.prop('disabled', false)
+
   btn_win.click ->
     win.play()
     img_win1.fadeIn(3000)
@@ -53,5 +57,5 @@ setTimeout ->
 setTimeout ->
   win.src = "/audios/win.mp3"
   lose.src = "/audios/lose.mp3"
-, 5000
+, 1000
 
